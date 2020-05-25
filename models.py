@@ -31,7 +31,7 @@ from sqlalchemy import Column, String, Integer, create_engine, Text
 #----------------------------------------------------------------------------#
 
 database_name = "postgres"
-db_path = "postgres://uwnlsiwjvvceln:22663b3f0b62a3022c646a4a4c903ea183012585ac2b32cc6dbb9ada351e78d2@ec2-54-86-170-8.compute-1.amazonaws.com:5432/d94fpsgvbj97an"
+db_path = "postgres://tyxzuqccfokonr:194f366cda0405fecff4331ed1b1643654c5e47cd178885aaa60db63bc124171@ec2-35-171-31-33.compute-1.amazonaws.com:5432/d3iq930ftck64c"
 db = SQLAlchemy()
 def setup_db(app, db_path=db_path):
   app.config["SQLALCHEMY_DATABASE_URI"] = db_path
