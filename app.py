@@ -61,7 +61,7 @@ def create_app(test_config=None):
 
   @app.route('/movies/<movie_id>', methods=['DELETE'])
   @requires_auth('delete:movie')
-  def delete_movie(jwt, movie_id):
+  def delete_movie(jwt,movie_id):
     movie = Movie.query.get(movie_id)
  
     if movie is None:
@@ -77,8 +77,8 @@ def create_app(test_config=None):
 
   @app.route('/actors/<actor_id>', methods=['DELETE'])
   @requires_auth('delete:actor')
-  def delete_actor(jwt, actor_id):
-    actor = Actor.query.get(actor_id)
+  def delete_actor(actor_id):
+    actor = Actors.query.get(actor_id)
 
     if actor is None:
       abort(404)
