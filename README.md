@@ -10,6 +10,19 @@ https://udacitycapston.herokuapp.com/
 The Casting Agency models a company that is responsible for creating movies and managing and assigning actors to those movies. You are an Executive Producer within the company and are creating a system to simplify and streamline your process. 
 
 
+### Heroku deployment
+
+This app is hosted on heroku. The front-end is under construction and the backend is up 
+For deploy eroku app 
+  - $ heroku login
+  - $ heroku git:clone -a udacitycapston "udacitycapston is the project name"
+  - $ cd udacitycapston
+
+Deploy your changes
+
+  - $ git add .
+  - $ git commit -am "make it better"
+  - $ git push heroku master
 
 ### Development Setup
 
@@ -43,8 +56,38 @@ To start and run the local development server,
 
 4. Navigate to Home page [http://localhost:5000](http://localhost:5000)
 
+### Authentication
 
-Test endpoints:
+The app uses Auth0 as a third party authentication service.
+
+Three roles have been created to manage the system. Each role is restricted to perform certain CRUD operations on the system as assigned and permitted by Auth0 service.
+
+The three roles are:
+  - Casting assistant
+      - Permission to get:movies and get:actors
+    - Login info:
+      - Email: castingssistant@capston.com
+      - Password: M8RhRbdZPdW8Zt7
+
+
+  - Casting Director
+    - All permissions a Casting Assistant has, as mentioned above.
+        Permission to post:actors and delete:actors
+        Permission to patch:actors and patch:movies
+    - Login info:
+      - Email: castingdirector@capston.com
+      - Password: M8RhRbdZPdW8Zt7
+
+
+    Executive Producer
+      - All permissions a Casting Director has, as mentioned above.
+        Permission to post:movies and delete:movies
+      - Login info:
+            Email: executiveproducer@capston.com
+            password: RbdZPdW8Zt7
+
+
+### Test endpoints:
 
 GET '/actors'
 - Get a list of movies
