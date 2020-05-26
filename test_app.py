@@ -66,11 +66,15 @@ class CastingAgencyTestCase(unittest.TestCase):
         self.assertTrue(len(data['movies']) >= 0)
 
     def test_create_movies(self):
-        res = self.client().post('/movies', json=self.new_movie, , headers={"Authorization": (Executive_Producer)})
+        res = self.client().post(
+            '/movies',
+            json=self.new_movie,
+            headers={
+                "Authorization": (Executive_Producer)})
         data = json.loads(res.data)
 
         self.assertTrue(data['success'])
-        #self.assertTrue(len(data['movies']) == 13)
+        # self.assertTrue(len(data['movies']) == 13)
 
     def test_create_actors(self):
         res = self.client().post(
@@ -81,16 +85,16 @@ class CastingAgencyTestCase(unittest.TestCase):
         data = json.loads(res.data)
 
         self.assertTrue(data['success'])
-        #self.assertTrue(len(data['actors']) == 1)
+        # self.assertTrue(len(data['actors']) == 1)
 
     def test_update_movies(self):
-        #self.client().post('/movies', json=self.new_movie)
+        # self.client().post('/movies', json=self.new_movie)
         res = self.client().patch('/movies/22', json=self.update_movie,
                                   headers={"Authorization": (Casting_Director)})
         data = json.loads(res.data)
 
         self.assertTrue(data['success'])
-        #self.assertTrue(len(data['movies']) == 22)
+        # self.assertTrue(len(data['movies']) == 22)
 
     def test_delete_actors(self):
         self.client().post(
