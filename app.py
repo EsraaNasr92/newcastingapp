@@ -42,7 +42,7 @@ def create_app(test_config=None):
         'success': True,
         'actors': paginate_response(request, Actors.query.order_by(Actors.id).all())
         })
-    except:
+    except Exception:
       abort(422)
 
 
@@ -105,7 +105,7 @@ def create_app(test_config=None):
       data = name and age
       if not data:
         abort(400)
-    except (TypeError, KeyError):
+    except Exception:
       abort(400)
 
     try:
@@ -114,7 +114,7 @@ def create_app(test_config=None):
         'success': True,
         'actors': name
       }), 200
-    except:
+    except Exception:
       abort(422)
 
   @app.route('/movies', methods=['POST'])
@@ -127,7 +127,7 @@ def create_app(test_config=None):
       data = title and release_date
       if not data:
         abort(400)
-    except (TypeError, KeyError):
+    except Exception:
       abort(400)
 
     try:
@@ -136,7 +136,7 @@ def create_app(test_config=None):
         'success': True,
         'movie': title
       }), 200
-    except:
+    except Exception:
       abort(422)
 
 
