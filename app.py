@@ -31,10 +31,7 @@ def create_app(test_config=None):
 
     @app.route('/')
     def index():
-        return redirect("https://capston.auth0.com/authorize\
-          ?audience=capston&response_type=token\
-          &client_id=tj4ICd5dw4ELZYZiC0sjQ6HzbTqg6qVw\
-          &redirect_uri=http://127.0.0.1/5000")
+        return redirect("https://capston.auth0.com/authorize?audience=capston&response_type=token&client_id=tj4ICd5dw4ELZYZiC0sjQ6HzbTqg6qVw&redirect_uri=http://127.0.0.1/5000")
 
     """
   GET Movies and Actors
