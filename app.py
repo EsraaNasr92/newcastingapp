@@ -1,4 +1,4 @@
-from flask import Flask, request, abort, jsonify
+from flask import Flask, request, abort, jsonify, redirect
 from flask_sqlalchemy import SQLAlchemy
 import json
 from flask_cors import CORS
@@ -31,7 +31,10 @@ def create_app(test_config=None):
 
     @app.route('/')
     def index():
-        return jsonify({'message': 'Hello'})
+        return redirect("https://capston.auth0.com/authorize\
+          ?audience=capston&response_type=token\
+          &client_id=tj4ICd5dw4ELZYZiC0sjQ6HzbTqg6qVw\
+          &redirect_uri=http://127.0.0.1/5000")
 
     """
   GET Movies and Actors
@@ -233,6 +236,14 @@ def create_app(test_config=None):
             "error": 400,
             "message": str(error)
         }), 400
+
+    @app.errorhandler(500)
+    def bad_request(error):
+        return jsonify({
+            "success": False,
+            "error": 500,
+            "message": "500 Internal Server Error"
+        }), 500
 
     @app.errorhandler(AuthError)
     def auth_error(auth_error):
