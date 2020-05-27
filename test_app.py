@@ -89,8 +89,12 @@ class CastingAgencyTestCase(unittest.TestCase):
 
     def test_update_movies(self):
         # self.client().post('/movies', json=self.new_movie)
-        res = self.client().patch('/movies/22', json=self.update_movie,
-                                  headers={"Authorization": (self.Casting_Director)})
+        res = self.client().patch(
+            '/movies/22',
+            json=self.update_movie,
+            headers={
+                "Authorization": (
+                    self.Casting_Director)})
         data = json.loads(res.data)
 
         self.assertTrue(data['success'])
@@ -101,7 +105,7 @@ class CastingAgencyTestCase(unittest.TestCase):
             '/actors',
             json=self.new_actor,
             headers={
-                "Authorization": (Casting_Director)})
+                "Authorization": (self.Casting_Director)})
 
         res = self.client().delete('/actors/22')
         data = json.loads(res.data)
